@@ -31,14 +31,34 @@
     <script>
       const map = new maplibregl.Map({
         container: "map",
-        style: "https://demotiles.maplibre.org/globe.json",
+        style: {
+          version: 8,
+          sources: {
+            satellite: {
+              type: "raster",
+              tiles: [
+                "https://tiles.maps.eox.at/wmts/1.0.0/s2cloudless-2020_3857/default/g/{z}/{y}/{x}.jpg",
+              ],
+              tileSize: 256,
+            },
+          },
+          layers: [
+            {
+              id: "satellite",
+              type: "raster",
+              source: "satellite",
+            },
+          ],
+          projection: {
+            type: "globe",
+          },
+        },
         center: [0, 20],
         zoom: 1.5,
         antialias: true,
       });
 
       map.on("load", () => {
-        
         map.setSky({
           "sky-color": "#080820",
           "horizon-color": "#2a2a3a",
@@ -57,7 +77,6 @@
         } catch (e) {
           console.error("Error adding stars layer:", e);
         }
-
       });
     </script>
   </body>
