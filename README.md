@@ -1,6 +1,6 @@
 # maplibre-gl-stars
 
-Plugin / Custom Layer for adding stars to MapLibre GL JS
+Custom Layer for adding stars to MapLibre GL JS
 
 Support for Rotation and Pitch
 
