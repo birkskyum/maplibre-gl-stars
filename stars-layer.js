@@ -169,8 +169,6 @@ function createStarsLayer(options = {}) {
                 console.error('Program linking error:', gl.getProgramInfoLog(this.program));
             }
 
-            console.log('Stars layer initialized, program:', this.program);
-
             // Create full-screen quad
             const vertices = new Float32Array([
                 -1, -1,
@@ -205,16 +203,12 @@ function createStarsLayer(options = {}) {
                 applyTerrainMatrix: true
             });
 
-            console.log('Stars layer render called, projectionTransition:', projectionData.projectionTransition);
-
             if (projectionData.projectionTransition === 0) {
-                console.log('Skipping stars - not in globe mode');
-                return; // Not in globe mode
+                return; 
             }
 
             gl.useProgram(this.program);
 
-            // Calculate uniforms
             const vec = new Float64Array([0, 0, 0, 1]);
             const mat4 = window.mat4;
             const vec4 = window.vec4;

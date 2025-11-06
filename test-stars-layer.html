@@ -38,38 +38,26 @@
       });
 
       map.on("load", () => {
-        // Set sky layer for better visualization
+        
         map.setSky({
           "sky-color": "#080820",
           "horizon-color": "#2a2a3a",
           "atmosphere-blend": 0.8,
         });
 
-        // Add stars as the first layer (background)
         const starsLayer = createStarsLayer({
           id: "stars",
           intensity: 20.0,
           density: 0.15,
         });
 
-        console.log("Created stars layer:", starsLayer);
-        console.log(
-          "Available layers:",
-          map.getStyle().layers.map((l) => l.id)
-        );
-
         // Add as first layer
         try {
           map.addLayer(starsLayer, map.getStyle().layers[0].id);
-          console.log("Successfully added stars layer");
         } catch (e) {
           console.error("Error adding stars layer:", e);
         }
 
-        console.log("Map loaded with stars custom layer!");
-        console.log(
-          "Try rotating and tilting the globe to see the stars move with it."
-        );
       });
     </script>
   </body>
